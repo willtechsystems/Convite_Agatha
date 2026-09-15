@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Convite Especial</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="card-container">
+    <div id="tela-envelope" class="secao-envelope" onclick="abrirConvite()">
+      <h2 class="titulo-envelope">Você recebeu um convite especial!</h2>
+      <p class="instrucao-envelope">Clique no envelope para abrir</p>
+      <div class="envelope-wrapper">
+        <img id="img-envelope" src="" alt="Envelope do Convite">
+      </div>
+    </div>
+
+    <div id="tela-principal" class="secao-principal oculto">
+      <span class="subtitulo-topo">VAMOS COMEMORAR!</span>
+      <h1 id="txt-nome" class="nome-destaque"></h1>
+      <h2 id="txt-idade" class="idade-destaque"></h2>
+
+      <div class="bloco-data-local">
+        <p id="txt-data" class="txt-data"></p>
+        <p id="txt-horario" class="txt-horario"></p>
+        <p id="txt-local" class="txt-local"></p>
+      </div>
+
+      <div class="imagem-tema-wrapper">
+        <img id="img-tema" src="" alt="Tema do Aniversário">
+      </div>
+
+      <nav class="botoes-container">
+        <button class="btn" onclick="abrirModalPresentes()">🎁 SUGESTÃO DE PRESENTE</button>
+        <a id="link-maps" class="btn" target="_blank" rel="noopener noreferrer">📍 LOCALIZAÇÃO</a>
+        <button class="btn" onclick="confirmarPresenca()">✅ CONFIRMAR PRESENÇA</button>
+        <a id="link-grupo" class="btn" target="_blank" rel="noopener noreferrer">💬 GRUPO DA FESTA</a>
+      </nav>
+    </div>
+  </main>
+
+  <div id="modal-presentes" class="modal-overlay">
+    <div class="modal-card">
+      <h3>Sugestões de Presentes</h3>
+      <ul id="lista-presentes"></ul>
+      <button class="btn btn-fechar" onclick="fecharModalPresentes()">Fechar</button>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
