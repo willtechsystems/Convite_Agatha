@@ -1,10 +1,13 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E PALETA DE CORES (TINKER BELL / BOSQUE)
+   ========================================================================== */
 :root {
-  --cor-fundo: #fdfbf7;
-  --cor-card: #ffffff;
-  --cor-primaria: #d4af37; /* Dourado suave */
-  --cor-texto: #5a4b41;
-  --cor-destaque: #e8a598; /* Rosa pastel */
-  --cor-botao-hover: #c59b27;
+  --cor-fundo: #f0f4ee;           /* Fundo da tela exterior */
+  --cor-card: #ffffff;            /* Fundo do cartão/convite */
+  --cor-primaria: #8a9a5b;        /* Verde folha/musgo */
+  --cor-secundaria: #d8a7b1;      /* Rosa/Lilás suave */
+  --cor-texto: #4a3e3d;           /* Marrom suave para leitura confortável */
+  --cor-sombra: rgba(0, 0, 0, 0.1);
   --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -15,8 +18,8 @@
 }
 
 body {
-  background: linear-gradient(135deg, #fef5ee 0%, #f3e7e9 100%);
   font-family: var(--fonte-principal);
+  background-color: var(--cor-fundo);
   color: var(--cor-texto);
   display: flex;
   justify-content: center;
@@ -25,133 +28,192 @@ body {
   padding: 15px;
 }
 
+/* ==========================================================================
+   CONTAINER DO CONVITE (ESTILO MOBILE CARD)
+   ========================================================================== */
 .card-container {
   background-color: var(--cor-card);
   width: 100%;
-  max-width: 420px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 25px 20px;
-  text-align: center;
+  max-width: 420px;               /* Largura ideal para simular tela de celular */
+  min-height: 680px;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px var(--cor-sombra);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px 20px;
 }
 
-/* Ocultar elementos */
+/* Utilitário para ocultar elementos com transição fluida */
 .oculto {
   display: none !important;
 }
 
-/* TELA ENVELOPE */
+/* ==========================================================================
+   TELA 1: CAPA COM ENVELOPE / VÍDEO
+   ========================================================================== */
 .secao-envelope {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  padding: 20px 10px;
+  user-select: none;
 }
 
 .titulo-envelope {
-  font-size: 1.2rem;
-  color: var(--cor-texto);
+  font-size: 1.4rem;
+  color: var(--cor-primaria);
   margin-bottom: 8px;
 }
 
 .instrucao-envelope {
-  font-size: 0.9rem;
-  color: #888;
+  font-size: 0.95rem;
+  color: #7a7a7a;
   margin-bottom: 20px;
 }
 
-.envelope-wrapper img {
-  width: 80%;
-  max-width: 250px;
-  transition: transform 0.3s ease;
+.envelope-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  height: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px var(--cor-sombra);
+  transition: transform 0.2s ease;
 }
 
-.secao-envelope:hover .envelope-wrapper img {
-  transform: scale(1.05);
+.envelope-wrapper:hover {
+  transform: scale(1.02);
 }
 
-/* TELA PRINCIPAL */
+/* Ajuste do Vídeo em Loop */
+#bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* Mantém o vídeo preenchendo a área sem distorcer */
+  display: block;
+}
+
+/* ==========================================================================
+   TELA 2: CONTEÚDO PRINCIPAL
+   ========================================================================== */
+.secao-principal {
+  width: 100%;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .subtitulo-topo {
   font-size: 0.85rem;
   letter-spacing: 2px;
   color: var(--cor-primaria);
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .nome-destaque {
-  font-size: 2.8rem;
-  color: var(--cor-destaque);
-  margin: 5px 0;
-  font-family: 'Georgia', serif;
+  font-size: 2.2rem;
+  color: var(--cor-primaria);
+  margin: 5px 0 0 0;
 }
 
 .idade-destaque {
-  font-size: 1.1rem;
-  color: var(--cor-primaria);
-  letter-spacing: 1px;
+  font-size: 1.2rem;
+  color: var(--cor-secundaria);
   margin-bottom: 15px;
 }
 
 .bloco-data-local {
-  background-color: #faf5f0;
-  padding: 12px;
+  background-color: #fcfbf9;
+  border: 1px dashed #dcd6cd;
   border-radius: 12px;
-  margin: 15px 0;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+}
+
+.txt-data, .txt-horario, .txt-local {
   font-size: 0.95rem;
-  line-height: 1.5;
+  margin: 4px 0;
 }
 
 .imagem-tema-wrapper img {
-  width: 100%;
-  max-width: 220px;
-  margin: 10px 0;
+  max-width: 180px;
+  height: auto;
+  margin: 10px 0 15px 0;
 }
 
-/* BOTÕES */
+/* ==========================================================================
+   BOTÕES DE INTERAÇÃO
+   ========================================================================== */
 .botoes-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 15px;
+  gap: 10px;
+  width: 100%;
 }
 
 .btn {
-  display: block;
-  width: 100%;
-  padding: 12px 15px;
-  background-color: var(--cor-card);
-  color: var(--cor-texto);
-  border: 1.5px solid var(--cor-primaria);
-  border-radius: 25px;
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
+  display: block;
+  text-align: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px var(--cor-sombra);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn:hover {
-  background-color: var(--cor-primaria);
-  color: #fff;
-  transform: translateY(-2px);
+  background-color: #78874d;
 }
 
-/* MODAL DE PRESENTES */
+.btn-fechar {
+  background-color: #888888;
+  margin-top: 15px;
+}
+
+.btn-fechar:hover {
+  background-color: #666666;
+}
+
+/* ==========================================================================
+   MODAL DE PRESENTES
+   ========================================================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 100;
 }
 
 .modal-overlay.ativo {
@@ -160,46 +222,31 @@ body {
 }
 
 .modal-card {
-  background: #fff;
-  padding: 25px;
-  border-radius: 15px;
+  background-color: var(--cor-card);
   width: 90%;
-  max-width: 350px;
+  max-width: 360px;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 .modal-card h3 {
-  color: var(--cor-destaque);
+  color: var(--cor-primaria);
   margin-bottom: 15px;
 }
 
-.modal-card ul {
+#lista-presentes {
   list-style: none;
   text-align: left;
-  margin-bottom: 20px;
+}
+
+#lista-presentes li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
   font-size: 0.95rem;
-  line-height: 1.8;
 }
 
-.btn-fechar {
-  background-color: #eee;
-  border: none;
-}
-
-/* ANIMAÇÕES */
-.animar-saida {
-  animation: fadeOut 0.5s forwards;
-}
-
-.animar-entrada {
-  animation: fadeIn 0.5s forwards;
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; transform: scale(0.95); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+#lista-presentes li:last-child {
+  border-bottom: none;
 }

@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Proteção contra indexação em buscadores -->
   <meta name="robots" content="noindex, nofollow">
+  
   <title>Convite Especial</title>
-  <link rel="stylesheet" href="./css/style.css?v=1.1">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <main class="card-container">
+    
+    <!-- TELA 1: CAPA COM VÍDEO DO ENVELOPE -->
     <div id="tela-envelope" class="secao-envelope" onclick="abrirConvite()">
       <h2 class="titulo-envelope">Você recebeu um convite especial!</h2>
       <p class="instrucao-envelope">Clique no envelope para abrir</p>
+      
       <div class="envelope-wrapper">
-        <img id="img-envelope" src="" alt="Envelope do Convite">
+        <video autoplay loop muted playsinline id="bg-video">
+          <source src="assets/fundo.mp4" type="video/mp4">
+          Seu navegador não suporta vídeos.
+        </video>
       </div>
     </div>
 
+    <!-- TELA 2: CONTEÚDO PRINCIPAL -->
     <div id="tela-principal" class="secao-principal oculto">
       <span class="subtitulo-topo">VAMOS COMEMORAR!</span>
       <h1 id="txt-nome" class="nome-destaque"></h1>
@@ -33,6 +43,7 @@
         <img id="img-tema" src="" alt="Tema do Aniversário">
       </div>
 
+      <!-- BOTÕES DE INTERAÇÃO -->
       <nav class="botoes-container">
         <button class="btn" onclick="abrirModalPresentes()">🎁 SUGESTÃO DE PRESENTE</button>
         <a id="link-maps" class="btn" target="_blank" rel="noopener noreferrer">📍 LOCALIZAÇÃO</a>
@@ -40,8 +51,10 @@
         <a id="link-grupo" class="btn" target="_blank" rel="noopener noreferrer">💬 GRUPO DA FESTA</a>
       </nav>
     </div>
+
   </main>
 
+  <!-- MODAL DE PRESENTES -->
   <div id="modal-presentes" class="modal-overlay">
     <div class="modal-card">
       <h3>Sugestões de Presentes</h3>
