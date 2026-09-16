@@ -1,28 +1,26 @@
 const CONFIG = {
-  nomeAniversariante: "Isabella",
+  // Informações Principais
+  nomeAniversariante: "Ágatha",
   idade: "1 ANO",
   dataExtenso: "SÁBADO, 05 DE SETEMBRO",
-  horario: "ÀS 19:00",
-  localNome: "Pizzaria Nossa Casa",
-  
-  whatsappNumero: "5563999999999",
-  linkGrupoWhatsapp: "https://chat.whatsapp.com/SEU_GRUPO_AQUI",
+  horario: "19:00h",
+  localNome: "Casa de Eventos",
+
+  // Links Úteis
   linkGoogleMaps: "https://maps.google.com",
+  linkGrupoWhatsapp: "https://chat.whatsapp.com/seu-grupo",
 
-  imagemEnvelope: "https://via.placeholder.com/300x200?text=Clique+para+Abrir",
-  imagemTema: "https://via.placeholder.com/400x200?text=A+Bela+e+a+Fera",
+  // Seu WhatsApp para receber as confirmações
+  numeroWhatsappOrganizador: "5563992134133", // Coloque seu número com 55 + DDD
+  
+  // Caminho das Imagens (dentro da pasta assets)
+  imgEnvelope: "assets/envelope.png",
+  imgTema: "assets/tema.png",
 
-  sugestoesPresente: [
-    "Roupa TAM. 2 anos",
-    "Sapato Nº 19/20",
-    "Brinquedos educativos"
-  ],
-
-  cores: {
-    fundoInicio: "#fde2e4",
-    fundoFim: "#e2ece9",
-    destaqueBordas: "#725135",
-    fundoBotoes: "#ffffff",
-    textoBotoes: "#555555"
-  }
+  // Lista de Presentes
+  sugestoesPresentes: [
+    { categoria: "Roupas", detalhe: "TAM 1 anos" },
+    { categoria: "Calçados", detalhe: "Nº 19/20" },
+    { categoria: "Brinquedos", detalhe: "Educativos / Pedagogia Montessori" }
+  ]
 };

@@ -1,43 +1,55 @@
-window.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.style.setProperty('--bg-start', CONFIG.cores.fundoInicio);
-  document.documentElement.style.setProperty('--bg-end', CONFIG.cores.fundoFim);
-  document.documentElement.style.setProperty('--primary', CONFIG.cores.destaqueBordas);
-  document.documentElement.style.setProperty('--btn-bg', CONFIG.cores.fundoBotoes);
-  document.documentElement.style.setProperty('--btn-text', CONFIG.cores.textoBotoes);
+document.addEventListener("DOMContentLoaded", () => {
+  // Preenche dados do HTML a partir do config.js
+  document.getElementById("txt-nome").textContent = CONFIG.nomeAniversariante;
+  document.getElementById("txt-idade").textContent = CONFIG.idade;
+  document.getElementById("txt-data").textContent = CONFIG.dataExtenso;
+  document.getElementById("txt-horario").textContent = CONFIG.horario;
+  document.getElementById("txt-local").textContent = CONFIG.localNome;
 
-  document.getElementById('txt-nome').innerText = CONFIG.nomeAniversariante;
-  document.getElementById('txt-idade').innerText = CONFIG.idade;
-  document.getElementById('txt-data').innerText = CONFIG.dataExtenso;
-  document.getElementById('txt-horario').innerText = CONFIG.horario;
-  document.getElementById('txt-local').innerText = `Local: ${CONFIG.localNome}`;
+  // Imagens
+  document.getElementById("img-envelope").src = CONFIG.imgEnvelope;
+  document.getElementById("img-tema").src = CONFIG.imgTema;
 
-  document.getElementById('img-envelope').src = CONFIG.imagemEnvelope;
-  document.getElementById('img-tema').src = CONFIG.imagemTema;
-  document.getElementById('link-maps').href = CONFIG.linkGoogleMaps;
-  document.getElementById('link-grupo').href = CONFIG.linkGrupoWhatsapp;
+  // Links diretos
+  document.getElementById("link-maps").href = CONFIG.linkGoogleMaps;
+  document.getElementById("link-grupo").href = CONFIG.linkGrupoWhatsapp;
 
-  const listaUl = document.getElementById('lista-presentes');
-  CONFIG.sugestoesPresente.forEach(item => {
-    const li = document.createElement('li');
-    li.innerText = item;
+  // Renderiza lista de presentes
+  const listaUl = document.getElementById("lista-presentes");
+  listaUl.innerHTML = "";
+  CONFIG.sugestoesPresentes.forEach(item => {
+    const li = document.createElement("li");
+    li.innerHTML = `<strong>${item.categoria}:</strong> ${item.detalhe}`;
     listaUl.appendChild(li);
   });
 });
 
+// Ação de abrir o convite ao clicar no envelope
 function abrirConvite() {
-  document.getElementById('tela-envelope').classList.add('oculto');
-  document.getElementById('tela-principal').classList.remove('oculto');
+  const telaEnvelope = document.getElementById("tela-envelope");
+  const telaPrincipal = document.getElementById("tela-principal");
+
+  telaEnvelope.classList.add("animar-saida");
+  
+  setTimeout(() => {
+    telaEnvelope.style.display = "none";
+    telaPrincipal.classList.remove("oculto");
+    telaPrincipal.classList.add("animar-entrada");
+  }, 500);
 }
 
+// Confirmação de Presença via WhatsApp (Tratado e codificado com segurança)
+function confirmarPresenca() {
+  const mensagem = `Olá! Gostaria de confirmar minha presença no aniversário de ${CONFIG.nomeAniversariante}.\n\nNome(s) dos convidados: `;
+  const urlWhatsapp = `https://wa.me/${CONFIG.numeroWhatsappOrganizador}?text=${encodeURIComponent(mensagem)}`;
+  window.open(urlWhatsapp, "_blank", "noopener,noreferrer");
+}
+
+// Modal de Presentes
 function abrirModalPresentes() {
-  document.getElementById('modal-presentes').style.display = 'flex';
+  document.getElementById("modal-presentes").classList.add("ativo");
 }
 
 function fecharModalPresentes() {
-  document.getElementById('modal-presentes').style.display = 'none';
-}
-
-function confirmarPresenca() {
-  const mensagem = encodeURIComponent(`Olá! Gostaria de confirmar minha presença no aniversário da ${CONFIG.nomeAniversariante}.`);
-  window.open(`https://wa.me/${CONFIG.whatsappNumero}?text=${mensagem}`, '_blank');
+  document.getElementById("modal-presentes").classList.remove("ativo");
 }
