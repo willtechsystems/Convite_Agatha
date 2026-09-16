@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Proteção contra indexação -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Convite Especial | Ágatha</title>
-  <link rel="stylesheet" href="css/style.css">
+  
+  <title>Convite Especial</title>
+  <!-- Versão adicionada para limpar o cache -->
+  <link rel="stylesheet" href="css/style.css?v=1.1">
 </head>
 <body>
 
-  <!-- VÍDEO DE FUNDO EM TELA CHEIA -->
+  <!-- VÍDEO DE FUNDO -->
   <video autoplay loop muted playsinline id="bg-video">
     <source src="assets/fundo.mp4" type="video/mp4">
+    Seu navegador não suporta este vídeo.
   </video>
 
   <main class="card-container">
@@ -20,22 +25,25 @@
     <div id="tela-envelope" class="secao-envelope" onclick="abrirConvite()">
       <h2 class="titulo-envelope">Você recebeu um convite especial!</h2>
       <p class="instrucao-envelope">Clique no envelope para abrir</p>
-      
       <div class="envelope-wrapper">
-        <img src="assets/envelope.png" alt="Envelope do Convite">
+        <img id="img-envelope" src="assets/envelope.png" alt="Envelope do Convite">
       </div>
     </div>
 
     <!-- TELA 2: CONTEÚDO PRINCIPAL -->
     <div id="tela-principal" class="secao-principal oculto">
       <span class="subtitulo-topo">VAMOS COMEMORAR!</span>
-      <h1 id="txt-nome" class="nome-destaque">Ágatha</h1>
-      <h2 id="txt-idade" class="idade-destaque">1 ANO</h2>
+      <h1 id="txt-nome" class="nome-destaque"></h1>
+      <h2 id="txt-idade" class="idade-destaque"></h2>
 
       <div class="bloco-data-local">
-        <p id="txt-data" class="txt-data">SÁBADO, 05 DE SETEMBRO</p>
-        <p id="txt-horario" class="txt-horario">19:00h</p>
-        <p id="txt-local" class="txt-local">Casa de Eventos</p>
+        <p id="txt-data" class="txt-data"></p>
+        <p id="txt-horario" class="txt-horario"></p>
+        <p id="txt-local" class="txt-local"></p>
+      </div>
+
+      <div class="imagem-tema-wrapper">
+        <img id="img-tema" src="" alt="Tema do Aniversário">
       </div>
 
       <!-- BOTÕES DE INTERAÇÃO -->
