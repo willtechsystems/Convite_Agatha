@@ -1,13 +1,13 @@
 /* ==========================================================================
-   CONFIGURAÇÕES GERAIS E PALETA DE CORES (TINKER BELL / BOSQUE)
+   CONFIGURAÇÕES GERAIS
    ========================================================================== */
 :root {
-  --cor-fundo: #f0f4ee;           /* Fundo da tela exterior */
-  --cor-card: #ffffff;            /* Fundo do cartão/convite */
-  --cor-primaria: #8a9a5b;        /* Verde folha/musgo */
-  --cor-secundaria: #d8a7b1;      /* Rosa/Lilás suave */
-  --cor-texto: #4a3e3d;           /* Marrom suave para leitura confortável */
-  --cor-sombra: rgba(0, 0, 0, 0.1);
+  --cor-fundo: #f0f4ee;
+  --cor-card: rgba(255, 255, 255, 0.85); /* Fundo semi-transparente para ver o vídeo */
+  --cor-primaria: #8a9a5b;
+  --cor-secundaria: #d8a7b1;
+  --cor-texto: #4a3e3d;
+  --cor-sombra: rgba(0, 0, 0, 0.15);
   --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -19,52 +19,64 @@
 
 body {
   font-family: var(--fonte-principal);
-  background-color: var(--cor-fundo);
   color: var(--cor-texto);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 15px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Vídeo em tela cheia / fundo do cartão */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.95);
 }
 
 /* ==========================================================================
-   CONTAINER DO CONVITE (ESTILO MOBILE CARD)
+   CONTAINER DO CONVITE
    ========================================================================== */
 .card-container {
   background-color: var(--cor-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   width: 100%;
-  max-width: 420px;               /* Largura ideal para simular tela de celular */
-  min-height: 680px;
+  max-width: 400px;
+  min-height: 600px;
   border-radius: 24px;
-  box-shadow: 0 10px 25px var(--cor-sombra);
+  box-shadow: 0 10px 30px var(--cor-sombra);
   position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 25px 20px;
+  padding: 30px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-/* Utilitário para ocultar elementos com transição fluida */
 .oculto {
   display: none !important;
 }
 
 /* ==========================================================================
-   TELA 1: CAPA COM ENVELOPE / VÍDEO
+   TELA 1: CAPA COM ENVELOPE
    ========================================================================== */
 .secao-envelope {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  user-select: none;
 }
 
 .titulo-envelope {
@@ -75,31 +87,24 @@ body {
 
 .instrucao-envelope {
   font-size: 0.95rem;
-  color: #7a7a7a;
-  margin-bottom: 20px;
+  color: #666;
+  margin-bottom: 25px;
 }
 
 .envelope-wrapper {
-  position: relative;
   width: 100%;
-  max-width: 320px;
-  height: 240px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px var(--cor-sombra);
-  transition: transform 0.2s ease;
+  max-width: 260px;
+  transition: transform 0.3s ease;
+}
+
+.envelope-wrapper img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.15));
 }
 
 .envelope-wrapper:hover {
-  transform: scale(1.02);
-}
-
-/* Ajuste do Vídeo em Loop */
-#bg-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;             /* Mantém o vídeo preenchendo a área sem distorcer */
-  display: block;
+  transform: scale(1.05);
 }
 
 /* ==========================================================================
@@ -124,7 +129,7 @@ body {
 }
 
 .nome-destaque {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: var(--cor-primaria);
   margin: 5px 0 0 0;
 }
@@ -136,22 +141,17 @@ body {
 }
 
 .bloco-data-local {
-  background-color: #fcfbf9;
-  border: 1px dashed #dcd6cd;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px dashed var(--cor-primaria);
   border-radius: 12px;
-  padding: 12px 15px;
-  margin-bottom: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 
 .txt-data, .txt-horario, .txt-local {
   font-size: 0.95rem;
   margin: 4px 0;
-}
-
-.imagem-tema-wrapper img {
-  max-width: 180px;
-  height: auto;
-  margin: 10px 0 15px 0;
+  font-weight: 500;
 }
 
 /* ==========================================================================
@@ -160,7 +160,7 @@ body {
 .botoes-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
 }
 
@@ -168,8 +168,8 @@ body {
   background-color: var(--cor-primaria);
   color: #ffffff;
   border: none;
-  border-radius: 12px;
-  padding: 12px 16px;
+  border-radius: 14px;
+  padding: 13px 16px;
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
@@ -177,24 +177,17 @@ body {
   text-align: center;
   cursor: pointer;
   box-shadow: 0 4px 10px var(--cor-sombra);
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn:active {
-  transform: scale(0.98);
+  transition: all 0.2s ease;
 }
 
 .btn:hover {
   background-color: #78874d;
+  transform: translateY(-2px);
 }
 
 .btn-fechar {
   background-color: #888888;
   margin-top: 15px;
-}
-
-.btn-fechar:hover {
-  background-color: #666666;
 }
 
 /* ==========================================================================
@@ -222,9 +215,9 @@ body {
 }
 
 .modal-card {
-  background-color: var(--cor-card);
+  background-color: #ffffff;
   width: 90%;
-  max-width: 360px;
+  max-width: 340px;
   padding: 20px;
   border-radius: 18px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -245,8 +238,4 @@ body {
   padding: 8px 0;
   border-bottom: 1px solid #eee;
   font-size: 0.95rem;
-}
-
-#lista-presentes li:last-child {
-  border-bottom: none;
 }
