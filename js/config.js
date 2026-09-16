@@ -1,26 +1,25 @@
 const CONFIG = {
-  // Informações Principais
+  // Informações Principais do Evento
   nomeAniversariante: "Ágatha",
   idade: "1 ANO",
-  dataExtenso: "SÁBADO, 05 DE SETEMBRO",
+  data: "SÁBADO, 05 DE SETEMBRO",
   horario: "19:00h",
-  localNome: "Casa de Eventos",
+  local: "Casa de Eventos",
 
-  // Links Úteis
-  linkGoogleMaps: "https://maps.google.com",
-  linkGrupoWhatsapp: "https://chat.whatsapp.com/seu-grupo",
+  // Contatos e Links Externos
+  // Importante: Insira o número no formato internacional sem caracteres especiais (Ex: 5563999999999)
+  numeroWhatsApp: "5563999999999", 
+  linkMaps: "https://maps.google.com",
+  linkGrupoWhatsApp: "https://chat.whatsapp.com/seu-grupo-aqui",
 
-  // Seu WhatsApp para receber as confirmações
-  numeroWhatsappOrganizador: "5563992134133", // Coloque seu número com 55 + DDD
-  
-  // Caminho das Imagens (dentro da pasta assets)
-  imgEnvelope: "assets/envelope.png",
-  imgTema: "assets/tema.png",
+  // Caminhos das Mídias (Ajuste caso use arquivos em SVG/JPG ou diretores diferentes)
+  imagemEnvelope: "assets/envelope.png",
+  imagemTema: "assets/envelope.png", // Ou o caminho para o logo/imagem do tema
 
-  // Lista de Presentes
+  // Lista de Sugestões de Presente para o Modal
   sugestoesPresentes: [
-    { categoria: "Roupas", detalhe: "TAM 1 anos" },
-    { categoria: "Calçados", detalhe: "Nº 19/20" },
-    { categoria: "Brinquedos", detalhe: "Educativos / Pedagogia Montessori" }
+    "Roupa TAM. 2 anos",
+    "Sapato N° 19/20",
+    "Brinquedos pedagógicos / educativos"
   ]
 };
