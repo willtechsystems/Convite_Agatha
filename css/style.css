@@ -1,35 +1,21 @@
-/* ==========================================================================
-   CONFIGURAÇÕES GERAIS
-   ========================================================================== */
-:root {
-  --cor-fundo: #f0f4ee;
-  --cor-card: rgba(255, 255, 255, 0.85); /* Fundo semi-transparente para ver o vídeo */
-  --cor-primaria: #8a9a5b;
-  --cor-secundaria: #d8a7b1;
-  --cor-texto: #4a3e3d;
-  --cor-sombra: rgba(0, 0, 0, 0.15);
-  --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  font-family: var(--fonte-principal);
-  color: var(--cor-texto);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 15px;
   position: relative;
   overflow-x: hidden;
 }
 
-/* Vídeo em tela cheia / fundo do cartão */
+/* Vídeo fixado em toda a tela */
 #bg-video {
   position: fixed;
   top: 0;
@@ -38,204 +24,158 @@ body {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-  filter: brightness(0.95);
+  filter: brightness(0.85);
 }
 
-/* ==========================================================================
-   CONTAINER DO CONVITE
-   ========================================================================== */
 .card-container {
-  background-color: var(--cor-card);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   width: 100%;
-  max-width: 400px;
-  min-height: 600px;
+  max-width: 380px;
+  min-height: 520px;
   border-radius: 24px;
-  box-shadow: 0 10px 30px var(--cor-sombra);
-  position: relative;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 30px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .oculto {
   display: none !important;
 }
 
-/* ==========================================================================
-   TELA 1: CAPA COM ENVELOPE
-   ========================================================================== */
+/* Capa Envelope */
 .secao-envelope {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
+  width: 100%;
 }
 
 .titulo-envelope {
-  font-size: 1.4rem;
-  color: var(--cor-primaria);
-  margin-bottom: 8px;
+  color: #8a9a5b;
+  font-size: 1.3rem;
+  margin-bottom: 6px;
 }
 
 .instrucao-envelope {
-  font-size: 0.95rem;
   color: #666;
-  margin-bottom: 25px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
 }
 
 .envelope-wrapper {
   width: 100%;
-  max-width: 260px;
-  transition: transform 0.3s ease;
+  max-width: 240px;
+  margin: 0 auto;
+  transition: transform 0.2s ease;
 }
 
 .envelope-wrapper img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
 }
 
 .envelope-wrapper:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* ==========================================================================
-   TELA 2: CONTEÚDO PRINCIPAL
-   ========================================================================== */
+/* Conteúdo do Convite */
 .secao-principal {
   width: 100%;
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .subtitulo-topo {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 2px;
-  color: var(--cor-primaria);
+  color: #8a9a5b;
   font-weight: 600;
-  text-transform: uppercase;
 }
 
 .nome-destaque {
-  font-size: 2.5rem;
-  color: var(--cor-primaria);
-  margin: 5px 0 0 0;
+  font-size: 2.4rem;
+  color: #8a9a5b;
+  margin: 5px 0 2px 0;
 }
 
 .idade-destaque {
-  font-size: 1.2rem;
-  color: var(--cor-secundaria);
+  font-size: 1.1rem;
+  color: #d8a7b1;
   margin-bottom: 15px;
 }
 
 .bloco-data-local {
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px dashed var(--cor-primaria);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed #8a9a5b;
   border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 12px;
+  margin-bottom: 18px;
+  font-weight: 600;
+  color: #4a3e3d;
 }
 
-.txt-data, .txt-horario, .txt-local {
-  font-size: 0.95rem;
-  margin: 4px 0;
-  font-weight: 500;
-}
-
-/* ==========================================================================
-   BOTÕES DE INTERAÇÃO
-   ========================================================================== */
 .botoes-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   width: 100%;
 }
 
 .btn {
-  background-color: var(--cor-primaria);
+  background: #8a9a5b;
   color: #ffffff;
   border: none;
-  border-radius: 14px;
-  padding: 13px 16px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
   text-decoration: none;
-  display: block;
-  text-align: center;
   cursor: pointer;
-  box-shadow: 0 4px 10px var(--cor-sombra);
-  transition: all 0.2s ease;
+  transition: background 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .btn:hover {
-  background-color: #78874d;
-  transform: translateY(-2px);
+  background: #78874d;
 }
 
-.btn-fechar {
-  background-color: #888888;
-  margin-top: 15px;
-}
-
-/* ==========================================================================
-   MODAL DE PRESENTES
-   ========================================================================== */
+/* Modal */
 .modal-overlay {
+  display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.modal-overlay.ativo {
-  opacity: 1;
-  pointer-events: auto;
+  z-index: 999;
 }
 
 .modal-card {
-  background-color: #ffffff;
-  width: 90%;
-  max-width: 340px;
+  background: #fff;
   padding: 20px;
-  border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 320px;
   text-align: center;
 }
 
-.modal-card h3 {
-  color: var(--cor-primaria);
-  margin-bottom: 15px;
-}
-
-#lista-presentes {
+.modal-card ul {
   list-style: none;
+  margin: 15px 0;
   text-align: left;
 }
 
-#lista-presentes li {
+.modal-card li {
   padding: 8px 0;
   border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+}
+
+.btn-fechar {
+  background: #888;
+  margin-top: 10px;
 }
