@@ -20,43 +20,39 @@ body {
   position: relative;
 }
 
-/* VÍDEO DE FUNDO AJUSTADO PARA QUALQUER TELA */
-#bg-video {
+/* IMAGEM DE FUNDO ESTÁTICA */
+#bg-imagem {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
-  transform: translate(-50%, -50%);
   object-fit: cover;
-  filter: brightness(0.9);
+  object-position: center;
 }
 
-/* CARTÃO DO CONVITE COMPACTO E TRANSPARENTE */
-.card-container {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  width: 90%;
-  max-width: 320px;
-  min-height: auto;
-  border-radius: 20px;
-  padding: 20px 15px;
-  text-align: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  margin: auto;
-}
-
+/* REGRA QUE ESCONDE O ENVELOPE APÓS O CLIQUE */
 .oculto {
   display: none !important;
+}
+
+/* CARTÃO DO CONVITE */
+.card-container {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: 90%;
+  max-width: 350px;
+  border-radius: 22px;
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  margin: auto;
 }
 
 /* CAPA ENVELOPE */
@@ -67,19 +63,19 @@ body {
 
 .titulo-envelope {
   color: #8a9a5b;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 6px;
 }
 
 .instrucao-envelope {
   color: #555;
-  font-size: 0.85rem;
-  margin-bottom: 15px;
+  font-size: 0.88rem;
+  margin-bottom: 18px;
 }
 
 .envelope-wrapper {
   width: 100%;
-  max-width: 170px;
+  max-width: 210px;
   margin: 0 auto;
   transition: transform 0.2s ease;
 }
@@ -107,26 +103,37 @@ body {
 }
 
 .nome-destaque {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   color: #8a9a5b;
   margin: 5px 0 2px 0;
 }
 
 .idade-destaque {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #d8a7b1;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .bloco-data-local {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px dashed #8a9a5b;
   border-radius: 12px;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 12px;
+  margin-bottom: 16px;
   font-weight: 600;
   color: #4a3e3d;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
+}
+
+.imagem-tema-wrapper {
+  width: 100%;
+  max-width: 120px;
+  margin: 0 auto 15px auto;
+}
+
+.imagem-tema-wrapper img {
+  width: 100%;
+  height: auto;
 }
 
 .botoes-container {

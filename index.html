@@ -3,21 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Proteção contra indexação -->
   <meta name="robots" content="noindex, nofollow">
-  
   <title>Convite Especial</title>
-  <!-- Versão adicionada para limpar o cache -->
-  <link rel="stylesheet" href="css/style.css?v=1.1">
+  <link rel="stylesheet" href="css/style.css?v=2.0">
 </head>
 <body>
 
-  <!-- VÍDEO DE FUNDO -->
-  <video autoplay loop muted playsinline id="bg-video">
-    <source src="assets/fundo.mp4" type="video/mp4">
-    Seu navegador não suporta este vídeo.
-  </video>
+  <!-- IMAGEM DE FUNDO ESTÁTICA -->
+  <img id="bg-imagem" src="assets/fundo.png" alt="Fundo do Convite">
+
+  <!-- ÁUDIO DE FUNDO -->
+  <audio id="audio-fundo" loop></audio>
 
   <main class="card-container">
     
@@ -30,7 +26,7 @@
       </div>
     </div>
 
-    <!-- TELA 2: CONTEÚDO PRINCIPAL -->
+    <!-- TELA 2: CONTEÚDO PRINCIPAL (INICIA OCULTO) -->
     <div id="tela-principal" class="secao-principal oculto">
       <span class="subtitulo-topo">VAMOS COMEMORAR!</span>
       <h1 id="txt-nome" class="nome-destaque"></h1>
@@ -67,6 +63,6 @@
   </div>
 
   <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2.0"></script>
 </body>
 </html>

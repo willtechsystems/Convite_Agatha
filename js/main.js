@@ -1,19 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Inicialização segura dos dados do config.js
   if (typeof CONFIG !== "undefined") {
-    
-    // Atualiza imagem do tema (se o elemento existir)
-    const imgTema = document.getElementById("img-tema");
-    if (imgTema && CONFIG.imagemTema) {
-      imgTema.src = CONFIG.imagemTema;
+    // Carrega o áudio
+    const audio = document.getElementById("audio-fundo");
+    if (audio && CONFIG.audioFundo) {
+      audio.src = CONFIG.audioFundo;
+      audio.volume = 0;
     }
 
-    // Preenche dados do evento
+    // Carrega os textos e links
     const txtNome = document.getElementById("txt-nome");
-    if (txtNome) txtNome.innerText = CONFIG.nomeAniversariante || "Ágatha";
+    if (txtNome) txtNome.innerText = CONFIG.nomeAniversariante || "";
 
     const txtIdade = document.getElementById("txt-idade");
-    if (txtIdade) txtIdade.innerText = CONFIG.idade || "1 ANO";
+    if (txtIdade) txtIdade.innerText = CONFIG.idade || "";
 
     const txtData = document.getElementById("txt-data");
     if (txtData) txtData.innerText = CONFIG.data || "";
@@ -24,7 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const txtLocal = document.getElementById("txt-local");
     if (txtLocal) txtLocal.innerText = CONFIG.local || "";
 
-    // Configura links dos botões
+    const imgTema = document.getElementById("img-tema");
+    if (imgTema && CONFIG.imagemTema) imgTema.src = CONFIG.imagemTema;
+
     const linkMaps = document.getElementById("link-maps");
     if (linkMaps && CONFIG.linkMaps) linkMaps.href = CONFIG.linkMaps;
 
@@ -33,18 +34,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Função para abrir o convite
+// ABRIR CONVITE
 function abrirConvite() {
   const telaEnvelope = document.getElementById("tela-envelope");
   const telaPrincipal = document.getElementById("tela-principal");
+  const audio = document.getElementById("audio-fundo");
 
   if (telaEnvelope && telaPrincipal) {
-    telaEnvelope.classList.add("oculto");
+    telaEnvelope.style.display = "none"; // Garante que o envelope suma
     telaPrincipal.classList.remove("oculto");
+  }
+
+  // Tocar Música com Fade-in
+  if (audio && audio.src) {
+    audio.play().then(() => {
+      let volume = 0;
+      audio.volume = volume;
+      const fadeInterval = setInterval(() => {
+        if (volume < 0.6) {
+          volume += 0.05;
+          audio.volume = Math.min(volume, 0.6);
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, 200);
+    }).catch(err => {
+      console.log("Autoplay bloqueado pelo navegador:", err);
+    });
   }
 }
 
-// Funções do Modal de Presentes
+// MODAL DE PRESENTES
 function abrirModalPresentes() {
   const modal = document.getElementById("modal-presentes");
   const lista = document.getElementById("lista-presentes");
@@ -56,7 +76,6 @@ function abrirModalPresentes() {
       li.textContent = item;
       lista.appendChild(li);
     });
-    modal.classList.add("ativo");
     modal.style.display = "flex";
   }
 }
@@ -64,12 +83,11 @@ function abrirModalPresentes() {
 function fecharModalPresentes() {
   const modal = document.getElementById("modal-presentes");
   if (modal) {
-    modal.classList.remove("ativo");
     modal.style.display = "none";
   }
 }
 
-// Confirmação via WhatsApp
+// CONFIRMAÇÃO VIA WHATSAPP
 function confirmarPresenca() {
   if (typeof CONFIG !== "undefined" && CONFIG.numeroWhatsApp) {
     const mensagem = encodeURIComponent(
