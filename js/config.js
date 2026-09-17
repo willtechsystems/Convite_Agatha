@@ -7,19 +7,16 @@ const CONFIG = {
   local: "Casa de Eventos",
 
   // Contatos e Links Externos
-  // Importante: Insira o número no formato internacional sem caracteres especiais (Ex: 5563999999999)
   numeroWhatsApp: "5563999999999", 
   linkMaps: "https://maps.google.com",
-  linkGrupoWhatsApp: "https://chat.whatsapp.com/seu-grupo-aqui",
 
-  // Caminhos das Mídias (Ajuste caso use arquivos em SVG/JPG ou diretores diferentes)
-  imagemEnvelope: "assets/envelope.png",
-  imagemTema: "assets/envelope.png", // Ou o caminho para o logo/imagem do tema
+  // Mídias (Pasta 'ativos')
+  imagemEnvelope: "ativos/envelope.png",
+  audioFundo: "ativos/musica.mp3",
 
-  // Lista de Sugestões de Presente para o Modal
+  // Lista de Sugestões de Presente
   sugestoesPresentes: [
     "Roupa TAM. 2 anos",
-    "Sapato N° 19/20",
-    "Brinquedos pedagógicos / educativos"
+    "Brinquedos educativos / montessorianos"
   ]
 };

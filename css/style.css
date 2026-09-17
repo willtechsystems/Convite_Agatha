@@ -32,7 +32,6 @@ body {
   object-position: center;
 }
 
-/* REGRA QUE ESCONDE O ENVELOPE APÓS O CLIQUE */
 .oculto {
   display: none !important;
 }
@@ -43,9 +42,9 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   width: 90%;
-  max-width: 350px;
+  max-width: 360px;
   border-radius: 22px;
-  padding: 22px 18px;
+  padding: 24px 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -75,7 +74,8 @@ body {
 
 .envelope-wrapper {
   width: 100%;
-  max-width: 210px;
+  max-width: 260px; /* Mantém o tamanho proporcional no computador */
+  min-width: 200px;
   margin: 0 auto;
   transition: transform 0.2s ease;
 }
@@ -83,6 +83,7 @@ body {
 .envelope-wrapper img {
   width: 100%;
   height: auto;
+  display: block;
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
 }
 
@@ -123,17 +124,6 @@ body {
   font-weight: 600;
   color: #4a3e3d;
   font-size: 0.92rem;
-}
-
-.imagem-tema-wrapper {
-  width: 100%;
-  max-width: 120px;
-  margin: 0 auto 15px auto;
-}
-
-.imagem-tema-wrapper img {
-  width: 100%;
-  height: auto;
 }
 
 .botoes-container {
