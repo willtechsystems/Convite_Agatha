@@ -88,11 +88,9 @@ function fecharModalPresentes() {
 }
 
 // CONFIRMAÇÃO VIA WHATSAPP
+// SUBSTITUIR A FUNÇÃO confirmarPresenca() POR ESTA:
 function confirmarPresenca() {
-  if (typeof CONFIG !== "undefined" && CONFIG.numeroWhatsApp) {
-    const mensagem = encodeURIComponent(
-      `Olá! Gostaria de confirmar minha presença no aniversário da ${CONFIG.nomeAniversariante || "Ágatha"}.`
-    );
-    window.open(`https://wa.me/${CONFIG.numeroWhatsApp}?text=${mensagem}`, "_blank");
-  }
+  const textoMensagem = `Oii Ozy! Recebi o convite, gostaria de confirmar minha presença no aniversário da ${CONFIG.nomeAniversariante}💚.`;
+  const mensagemFormatada = encodeURIComponent(textoMensagem);
+  window.open(`https://wa.me/${CONFIG.numeroWhatsApp}?text=${mensagemFormatada}`, '_blank');
 }
