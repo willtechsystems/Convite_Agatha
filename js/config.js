@@ -1,22 +1,24 @@
 const CONFIG = {
-  // Informações Principais do Evento
+  // Dados do Aniversário
   nomeAniversariante: "Ágatha",
   idade: "1 ANO",
-  data: "SÁBADO, 05 DE SETEMBRO",
-  horario: "19:00h",
-  local: "Casa de Eventos",
-
-  // Contato do Contratante (Para receber as confirmações de presença)
-  numeroWhatsApp: "5563992134133", 
-  linkMaps: "https://maps.google.com",
-
-  // Mídias (Pasta 'assets')
-  imagemEnvelope: "assets/envelope.png",
-  audioFundo: "assets/musica.mp3",
-
-  // Lista de Sugestões de Presente
-  sugestoesPresentes: [
-    "Roupa TAM. 2 anos",
-    "Brinquedos educativos / montessorianos"
+  fraseTema: "Um jardim encantado, cheio de amor e magia, para celebrar o primeiro ano da nossa pequena fada.” 🦋✨",
+  
+  // Data e Horário
+  dataExtenso: "SÁBADO, 03 DE OUTUBRO DE 2026",
+  horario: "ÀS 19:00",
+  
+  // Endereço e Localização
+  localNome: "Rua Butiá, Qd. 14, Lt. 22 - St. Tocantins",
+  linkGoogleMaps: "https://maps.google.com/?q=-7.208333,-48.182417",
+  
+  // Contato do WhatsApp da Contratante
+  numeroWhatsApp: "5563992134133",
+  
+  // Sugestões de Presentes
+  sugestoesPresente: [
+    "Roupa TAM.  2 anos",
+    "Calçado Nº 19/20",
+    "Brinquedos Montessori "
   ]
 };
