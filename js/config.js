@@ -13,8 +13,9 @@ const CONFIG = {
   localEndereco: "Rua Butiá, Qd. 14, Lt. 22 - St. Tocantins",
   linkGoogleMaps: "https://maps.google.com/?q=-7.208333,-48.182417",
   
-  // Áudio de Fundo (coloque o caminho se for usar)
-  audioFundo: "", 
+  // Áudios do Convite
+  audioFundo: "assets/som_fundo.mp3",
+  audioEnvelope: "assets/som_envelope.mp3",
   
   // Contato do WhatsApp da Contratante
   numeroWhatsApp: "5563992134133",

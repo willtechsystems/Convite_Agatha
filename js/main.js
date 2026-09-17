@@ -1,10 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   if (typeof CONFIG !== "undefined") {
-    // Carrega o áudio
-    const audio = document.getElementById("audio-fundo");
-    if (audio && CONFIG.audioFundo) {
-      audio.src = CONFIG.audioFundo;
-      audio.volume = 0;
+    // Carrega o áudio de fundo
+    const audioFundo = document.getElementById("audio-fundo");
+    if (audioFundo && CONFIG.audioFundo) {
+      audioFundo.src = CONFIG.audioFundo;
+      audioFundo.volume = 0;
+    }
+
+    // Carrega o áudio do envelope (efeito mágico)
+    const audioEnvelope = document.getElementById("audio-envelope");
+    if (audioEnvelope && CONFIG.audioEnvelope) {
+      audioEnvelope.src = CONFIG.audioEnvelope;
+      audioEnvelope.volume = 0.6;
     }
 
     // Carrega os textos
@@ -34,36 +41,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const imgTema = document.getElementById("img-tema");
     if (imgTema && CONFIG.imagemTema) imgTema.src = CONFIG.imagemTema;
 
-    // Ajustado para CONFIG.linkGoogleMaps
+    // Link do Google Maps
     const linkMaps = document.getElementById("link-maps");
     if (linkMaps && CONFIG.linkGoogleMaps) linkMaps.href = CONFIG.linkGoogleMaps;
   }
 });
 
-// ABRIR CONVITE
+// ABRIR CONVITE COM EFEITO E MÚSICA DE FUNDO
 function abrirConvite() {
   const telaEnvelope = document.getElementById("tela-envelope");
   const telaPrincipal = document.getElementById("tela-principal");
-  const audio = document.getElementById("audio-fundo");
+  const audioFundo = document.getElementById("audio-fundo");
+  const audioEnvelope = document.getElementById("audio-envelope");
 
+  // 1. Toca o Efeito Sonoro Mágico do Envelope
+  if (audioEnvelope && audioEnvelope.src) {
+    audioEnvelope.currentTime = 0;
+    audioEnvelope.play().catch(err => console.log("Erro ao tocar efeito do envelope:", err));
+  }
+
+  // 2. Esconde o envelope e mostra o convite principal
   if (telaEnvelope && telaPrincipal) {
     telaEnvelope.style.display = "none";
     telaPrincipal.classList.remove("oculto");
   }
 
-  // Tocar Música com Fade-in
-  if (audio && audio.src) {
-    audio.play().then(() => {
+  // 3. Toca a Música de Fundo com Fade-in Suave
+  if (audioFundo && audioFundo.src) {
+    audioFundo.play().then(() => {
       let volume = 0;
-      audio.volume = volume;
+      audioFundo.volume = volume;
       const fadeInterval = setInterval(() => {
-        if (volume < 0.6) {
-          volume += 0.05;
-          audio.volume = Math.min(volume, 0.6);
+        if (volume < 0.3) { // Mantém a música num volume de fundo agradável (30%)
+          volume += 0.03;
+          audioFundo.volume = Math.min(volume, 0.3);
         } else {
           clearInterval(fadeInterval);
         }
-      }, 200);
+      }, 150);
     }).catch(err => {
       console.log("Autoplay bloqueado pelo navegador:", err);
     });
@@ -75,7 +90,6 @@ function abrirModalPresentes() {
   const modal = document.getElementById("modal-presentes");
   const lista = document.getElementById("lista-presentes");
 
-  // Corrigido para buscar CONFIG.sugestoesPresente (sem 's' no final)
   if (modal && lista && typeof CONFIG !== "undefined" && CONFIG.sugestoesPresente) {
     lista.innerHTML = "";
     CONFIG.sugestoesPresente.forEach(item => {
