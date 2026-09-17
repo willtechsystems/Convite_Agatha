@@ -1,41 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   if (typeof CONFIG !== "undefined") {
-    // Carrega o áudio de fundo
+    // 1. Vincula as fontes de áudio aos elementos
     const audioFundo = document.getElementById("audio-fundo");
     if (audioFundo && CONFIG.audioFundo) {
       audioFundo.src = CONFIG.audioFundo;
-      
-      // Inicia com volume bem baixinho (10%) para a capa
-      audioFundo.volume = 0.1;
 
-      // Tenta tocar automaticamente ao carregar
-      const promisePlay = audioFundo.play();
-      if (promisePlay !== undefined) {
-        promisePlay.catch(() => {
-          // Se o navegador bloquear o autoplay com som, inicia mudo e ativa no primeiro toque na tela
-          audioFundo.muted = true;
-          audioFundo.play();
-
-          const ativarSomNoToque = () => {
-            audioFundo.muted = false;
-            document.removeEventListener("touchstart", ativarSomNoToque);
-            document.removeEventListener("click", ativarSomNoToque);
-          };
-
-          document.addEventListener("touchstart", ativarSomNoToque, { once: true });
-          document.addEventListener("click", ativarSomNoToque, { once: true });
+      // Limita o tempo do loop se estiver configurado
+      if (CONFIG.tempoMaximoAudioSegundos) {
+        audioFundo.addEventListener("timeupdate", () => {
+          if (audioFundo.currentTime >= CONFIG.tempoMaximoAudioSegundos) {
+            audioFundo.currentTime = 0;
+            audioFundo.play().catch(e => console.log("Erro no loop:", e));
+          }
         });
       }
     }
 
-    // Carrega o áudio do envelope
     const audioEnvelope = document.getElementById("audio-envelope");
     if (audioEnvelope && CONFIG.audioEnvelope) {
       audioEnvelope.src = CONFIG.audioEnvelope;
       audioEnvelope.volume = 0.6;
     }
 
-    // Carrega os dados do convite
+    // 2. Preenche os campos do convite
     const txtNome = document.getElementById("txt-nome");
     if (txtNome) txtNome.innerText = CONFIG.nomeAniversariante || "";
 
@@ -66,41 +53,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ABRIR CONVITE (AUMENTA O VOLUME DA MÚSICA E TOCA O EFEITO DO ENVELOPE)
+// ABRIR CONVITE (EXECUTA SOM E NAVEGAÇÃO AO CLICAR)
 function abrirConvite() {
   const telaEnvelope = document.getElementById("tela-envelope");
   const telaPrincipal = document.getElementById("tela-principal");
   const audioFundo = document.getElementById("audio-fundo");
   const audioEnvelope = document.getElementById("audio-envelope");
 
-  // 1. Toca o Efeito Sonoro Mágico do Envelope
-  if (audioEnvelope && audioEnvelope.src) {
+  // 1. Toca o efeito do envelope
+  if (audioEnvelope) {
     audioEnvelope.currentTime = 0;
     audioEnvelope.play().catch(err => console.log("Erro ao tocar efeito do envelope:", err));
   }
 
-  // 2. Transição de telas
-  if (telaEnvelope && telaPrincipal) {
-    telaEnvelope.style.display = "none";
-    telaPrincipal.classList.remove("oculto");
-  }
-
-  // 3. Aumenta o volume da música de fundo (de 10% para 35% de forma gradual)
+  // 2. Toca a música de fundo e ajusta o volume de forma garantida
   if (audioFundo) {
     audioFundo.muted = false;
-    let vol = audioFundo.volume;
-    const fadeInterval = setInterval(() => {
-      if (vol < 0.35) {
-        vol += 0.03;
-        audioFundo.volume = Math.min(vol, 0.35);
-      } else {
-        clearInterval(fadeInterval);
-      }
-    }, 150);
+    audioFundo.currentTime = 0;
+    audioFundo.volume = 0.35; // Volume a 35%
+    audioFundo.play().catch(err => console.log("Erro ao iniciar música de fundo:", err));
+  }
+
+  // 3. Transição das telas via classes CSS
+  if (telaEnvelope && telaPrincipal) {
+    telaEnvelope.classList.add("oculto");
+    telaPrincipal.classList.remove("oculto");
   }
 }
 
-// PAUSAR O ÁUDIO QUANDO O USUÁRIO MINIMIZAR OU SAIR DA ABA DO NAVEGADOR
+// PAUSA O ÁUDIO AO MINIMIZAR / ALTERAR ABA
 document.addEventListener("visibilitychange", () => {
   const audioFundo = document.getElementById("audio-fundo");
   if (!audioFundo) return;
@@ -108,7 +89,6 @@ document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     audioFundo.pause();
   } else {
-    // Retoma a música caso a tela do convite principal já esteja aberta
     const telaPrincipal = document.getElementById("tela-principal");
     if (telaPrincipal && !telaPrincipal.classList.contains("oculto")) {
       audioFundo.play().catch(err => console.log("Erro ao retomar áudio:", err));
@@ -141,7 +121,9 @@ function fecharModalPresentes() {
 
 // CONFIRMAÇÃO VIA WHATSAPP
 function confirmarPresenca() {
-  const textoMensagem = `Oii Ozy! Recebi o convite, gostaria de confirmar minha presença no aniversário da ${CONFIG.nomeAniversariante}💚.`;
-  const mensagemFormatada = encodeURIComponent(textoMensagem);
-  window.open(`https://wa.me/${CONFIG.numeroWhatsApp}?text=${mensagemFormatada}`, '_blank');
+  if (typeof CONFIG !== "undefined" && CONFIG.numeroWhatsApp) {
+    const textoMensagem = `Oii Ozy! Recebi o convite, gostaria de confirmar minha presença no aniversário da ${CONFIG.nomeAniversariante}💚.`;
+    const mensagemFormatada = encodeURIComponent(textoMensagem);
+    window.open(`https://wa.me/${CONFIG.numeroWhatsApp}?text=${mensagemFormatada}`, '_blank');
+  }
 }
