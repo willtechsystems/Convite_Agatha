@@ -6,13 +6,13 @@ const CONFIG = {
   horario: "19:00h",
   local: "Casa de Eventos",
 
-  // Contatos e Links Externos
-  numeroWhatsApp: "5563999999999", 
+  // Contato do Contratante (Para receber as confirmações de presença)
+  numeroWhatsApp: "5563992134133", 
   linkMaps: "https://maps.google.com",
 
-  // Mídias (Pasta 'ativos')
-  imagemEnvelope: "ativos/envelope.png",
-  audioFundo: "ativos/musica.mp3",
+  // Mídias (Pasta 'assets')
+  imagemEnvelope: "assets/envelope.png",
+  audioFundo: "assets/musica.mp3",
 
   // Lista de Sugestões de Presente
   sugestoesPresentes: [
