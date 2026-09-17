@@ -13,44 +13,22 @@ html, body {
   padding: 0;
 }
 
+/* CORREÇÃO AQUI: Regra única do body com fundo fixo e alinhamento correto */
 body {
   background-color: #f5f7f2;
-  /* Fundo fixo direto no CSS apontando para a pasta assets */
   background-image: url('../assets/fundo.png');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
-}
-
-body {
   min-height: 100vh;
-  min-height: -webkit-fill-available;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 15px;
   position: relative;
   overflow-x: hidden;
-}
-
-/* FUNDO FIXO SEM SALTO NO MOBILE */
-#bg-imagem {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  height: -webkit-fill-available;
-  z-index: -1;
-  object-fit: cover;
-  object-position: center;
-  pointer-events: none;
 }
 
 .oculto {
@@ -260,4 +238,19 @@ body {
   background: #888;
   color: #fff;
   margin-top: 10px;
+}
+
+/* AJUSTE PARA TELAS DE COMPUTADOR (Mais de 768px) */
+@media (min-width: 768px) {
+  body {
+    /* Troca para fundo_pc.png se você colocar o arquivo na pasta assets */
+    background-image: url('../assets/fundo_pc.png'), url('../assets/fundo.png');
+  }
+}
+
+/* Troca a imagem de fundo em telas de computador (acima de 768px) */
+@media (min-width: 768px) {
+  body {
+    background-image: url('../assets/fundo_pc.png');
+  }
 }
