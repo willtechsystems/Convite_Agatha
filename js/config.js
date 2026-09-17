@@ -9,16 +9,20 @@ const CONFIG = {
   horario: "ÀS 19:00",
   
   // Endereço e Localização
-  localNome: "Rua Butiá, Qd. 14, Lt. 22 - St. Tocantins",
+  localNome: "La Casa de Eventos",
+  localEndereco: "Rua Butiá, Qd. 14, Lt. 22 - St. Tocantins",
   linkGoogleMaps: "https://maps.google.com/?q=-7.208333,-48.182417",
+  
+  // Áudio de Fundo (coloque o caminho se for usar)
+  audioFundo: "", 
   
   // Contato do WhatsApp da Contratante
   numeroWhatsApp: "5563992134133",
   
   // Sugestões de Presentes
   sugestoesPresente: [
-    "Roupa TAM.  2 anos",
-    "Calçado Nº 19/20",
-    "Brinquedos Montessori "
+    "Roupa TAM. 2 anos",
+    "Calçado Nº 21/22",
+    "Brinquedos Montessori / Educativos"
   ]
 };
