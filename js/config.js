@@ -6,10 +6,10 @@ const CONFIG = {
   
   // Data e Horário
   dataExtenso: "SÁBADO, 03 DE OUTUBRO DE 2026",
-  horario: "ÀS 19:00",
+  horario: "ÀS 16:00",
   
   // Endereço e Localização
-  localNome: "La Casa de Eventos",
+  localNome: "La Casa Eventos",
   localEndereco: "Rua Butiá, Qd. 14, Lt. 22 - St. Tocantins",
   linkGoogleMaps: "https://maps.google.com/?q=-7.208333,-48.182417",
   
